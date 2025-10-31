@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <meta name="color-scheme" content="light">
+  <title>IT Portfolio</title>
+  <meta name="description" content="Full-Stack Developer & ICT student portfolio of Patcharapol Rungsisakorn.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Roboto Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- GitHub-like Markdown styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-light.min.css">
+<style>
+  
+
+  /* Force Roboto Mono on rendered markdown */
+  .markdown-body, 
+  .markdown-body * {
+    font-family: "Roboto Mono", monospace !important;
+  }
+:root {
+  color-scheme: light !important; /* disables auto dark mode */
+}
+
+html, body {
+  background-color: white !important;
+  color: black !important;
+}
+
+  /* Optional: headings weight */
+  .markdown-body h1, 
+  .markdown-body h2, 
+  .markdown-body h3 {
+    font-weight: 700 !important;
+  }
+
+
+  /* Force light everywhere */
+  :root { color-scheme: light !important; }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* GitHub/Primer variables override (what actually paints .markdown-body) */
+  .markdown-body {
+    --color-canvas-default: #ffffff !important;
+    --color-canvas-subtle:  #ffffff !important;
+    --color-fg-default:     #000000 !important;
+    --color-border-default: #d0d7de !important;
+    --color-accent-fg:      #000000 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Belt-and-suspenders: if the browser prefers dark, still keep it light */
+  @media (prefers-color-scheme: dark) {
+    html, body, .container, .markdown-body, .markdown-body * {
+      background: #fff !important;
+      color: #000 !important;
+      border-color: #d0d7de !important;
+    }
+  }
+
+  /* Optional: keep links readable in forced light */
+  .markdown-body a { color: #000 !important; text-decoration: underline; }
+  .container {
+  max-width: 900px;
+  margin: 60px auto; /* top/bottom 60px, center horizontally */
+  padding: 0 40px;   /* inner left/right padding */
+  background-color: white !important;
+  color: black !important;
+}
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <article id="content" class="markdown-body">Loading portfolio…</article>
+  </div>
+
+  <!-- Marked.js to convert Markdown -> HTML -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  function getEntryPath() {
+    const url = new URL(location.href);
+    return url.searchParams.get('p') || location.pathname; // "/alice" or "/"
+  }
+  function lastSegment(pathname) {
+    return pathname.replace(/\/+$/, '').split('/').filter(Boolean).pop() || '';
+  }
+  async function fetchText(url) {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error('Fetch failed: ' + url);
+    return res.text();
+  }
+  async function fileExists(url) {
+    // Try a quick fetch to see if file is there; small and same-origin.
+    const res = await fetch(url, { method: 'GET', cache: 'no-store' });
+    return res.ok;
+  }
+  function renderMD(md) {
+    document.getElementById('content').innerHTML = marked.parse(md, { mangle:false, headerIds:false });
+  }
+
+  async function loadHome() {
+    try { renderMD(await fetchText('README.md')); }
+    catch { document.getElementById('content').textContent = 'Could not load README.md'; }
+    document.title = 'Home';
+  }
+
+  async function loadUser(user) {
+    const el = document.getElementById('content');
+    el.textContent = `Loading ${user}/README.md…`;
+    try {
+      const md = await fetchText(`/${user}/README.md`);
+      renderMD(md);
+      document.title = `${user}`;
+
+      // --- Resume detection (put resume files inside /<user>/ ) ---
+      const candidates = [
+        `/${user}/resume.pdf`, `/${user}/Resume.pdf`, `/${user}/CV.pdf`,
+        `/${user}/cv.pdf`, `/${user}/resume.docx`, `/${user}/resume.doc`,
+        `/${user}/resume.png`, `/${user}/resume.jpg`
+      ];
+      let found = null;
+      for (const u of candidates) {
+        if (await fileExists(u)) { found = u; break; }
+      }
+      if (found) {
+        const isPDF = /\.pdf$/i.test(found);
+        const resumeBlock = document.createElement('section');
+        resumeBlock.className = 'markdown-body';
+        resumeBlock.style.marginTop = '24px';
+        resumeBlock.innerHTML = `
+          <h2 id="resume">Resume</h2>
+          <p><a href="${found}" target="_blank" rel="noopener">Download resume</a></p>
+          ${isPDF ? `<embed src="${found}" type="application/pdf" width="100%" height="720" />` : ''}
+        `;
+        el.appendChild(resumeBlock);
+      } else {
+        // Optional: show a gentle note if missing
+        // el.insertAdjacentHTML('beforeend', `<p><em>No resume found in /${user}/</em></p>`);
+      }
+    } catch {
+      el.innerHTML = `<h2>Not found</h2><p>Looked for <code>/${user}/README.md</code> and couldn’t load it.</p>`;
+      document.title = 'Not found';
+    }
+  }
+
+  (function router() {
+    const path = getEntryPath();
+    const seg = lastSegment(path);
+    if (!seg) loadHome(); else loadUser(seg);
+
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="/"]');
+      if (!a) return;
+      e.preventDefault();
+      history.pushState({}, '', a.getAttribute('href'));
+      const seg2 = lastSegment(location.pathname);
+      if (!seg2) loadHome(); else loadUser(seg2);
+    });
+    window.addEventListener('popstate', () => {
+      const seg3 = lastSegment(location.pathname);
+      if (!seg3) loadHome(); else loadUser(seg3);
+    });
+  })();
+</script>
+
+</body>
+</html>
