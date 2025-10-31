@@ -86,7 +86,7 @@ You can view or download my full resume below:
 
 **[Download Resume (PDF)](./resume.pdf)**
 
-**[Linkedin)](https://l.instagram.com/?u=https%3A%2F%2Fwww.linkedin.com%2Fin%2Frujinont-rujitanont-7a6ba4390%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app&e=AT3i8jv68zHhueXVVpwcRnTQ3CXZN3do6HpBR_tKnCSIqNgaVmSahGDhDj4qFZbZcXyVQQM1m9pYFa-9jIPASLZnVHIfkEoI6cg8YsXZhVLQL8jT2TNK8OVd_-ME-UDbiIOABzJKzDTq)**
+**[Linkedin](https://l.instagram.com/?u=https%3A%2F%2Fwww.linkedin.com%2Fin%2Frujinont-rujitanont-7a6ba4390%3Futm_source%3Dshare%26utm_campaign%3Dshare_via%26utm_content%3Dprofile%26utm_medium%3Dios_app&e=AT3i8jv68zHhueXVVpwcRnTQ3CXZN3do6HpBR_tKnCSIqNgaVmSahGDhDj4qFZbZcXyVQQM1m9pYFa-9jIPASLZnVHIfkEoI6cg8YsXZhVLQL8jT2TNK8OVd_-ME-UDbiIOABzJKzDTq)**
 ---
 
 © 2025 Rujinont Rujitanont — Mahidol University, Faculty of ICT
