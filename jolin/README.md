@@ -59,12 +59,10 @@ Passionate about pursuing a career as a **system tester**, ensuring software qua
 
 ---
 
-## Resume
-You can view or download my full resume below:
+## Resume and Linkedin here !
 
-**[Download Resume (PDF)](./resume.pdf)**
-
-**[Follow up my Linkedin](https://www.linkedin.com/in/jolinda-fangfuangfu-7515b1379/)**
+- [Download Resume (PDF)](./resume.pdf)
+- [Follow up my Linkedin](https://www.linkedin.com/in/jolinda-fangfuangfu-7515b1379/)
 ---
 
 © 2025 Jolinda Fangfuangfu — Mahidol University, Faculty of ICT
