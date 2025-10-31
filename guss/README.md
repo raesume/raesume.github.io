@@ -52,11 +52,10 @@ I am eager to contribute to collaborative teams that build **reliable, user-cent
 
 ---
 
-## Resume
-You can view or download my full resume below:
+## Resume and Linkedin here !
 
-[Download Resume (PDF)](./resume.pdf)
-[Linkedin profile]([./resume.pdf](https://www.linkedin.com/in/nanthaphon-nonthasing-28019a397/))
+- [Download Resume (PDF)](./resume.pdf)
+- [Linkedin profile](https://www.linkedin.com/in/nanthaphon-nonthasing-28019a397/)
 
 
 ---
