@@ -64,7 +64,7 @@ You can view or download my full resume below:
 
 **[Download Resume (PDF)](./resume.pdf)**
 
-**[Follow up my Linkedin)](https://www.linkedin.com/in/jolinda-fangfuangfu-7515b1379/)**
+**[Follow up my Linkedin](https://www.linkedin.com/in/jolinda-fangfuangfu-7515b1379/)**
 ---
 
 © 2025 Jolinda Fangfuangfu — Mahidol University, Faculty of ICT
